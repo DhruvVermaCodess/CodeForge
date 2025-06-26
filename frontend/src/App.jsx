@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import LoginPage from './pages/LoginPage';
 import SignupPage from './pages/SignupPage';
@@ -10,15 +10,18 @@ import CodeForgePlacement from './pages/CodeForgePlacement';
 import { useContext } from 'react';
 import { AuthContext } from './contexts/AuthContext';
 import LoadingUI from './components/LoadingUi';
-import AdminPage from './pages/AdminPage';
 import CourseDetailsPage from './pages/CourseDetailsPage';
 import ProfilePage from './pages/ProfilePage';
 import PersonalDetails from './pages/PersonalDetails';
 import EnrollmentCourses from './pages/EnrollmentCourses';
 import CoursePage from './pages/CoursePage';
+import AdminLayout from './layouts/admin/AdminLayout';
+import AdminDashboard from './layouts/admin/components/AdminDashboard';
+import { useLocation } from 'react-router-dom';
 
 const App = () => {
   const { isAuth, loading } = useContext(AuthContext)
+  const { location } = useLocation();
 
   if (loading) {
     return <LoadingUI />
@@ -26,6 +29,7 @@ const App = () => {
   
   return (
     <Router>
+      {!location.search}
       <Navbar />
       <Routes>
         <Route path='/' element={<HomePage />} />
@@ -39,7 +43,9 @@ const App = () => {
         </Route>
         <Route path='/courses' element={<CoursePage />} />
         <Route path='/courses/:id' element={<CourseDetailsPage />} />
-        <Route path='/admin' element={<AdminPage />} />
+        <Route path='/admin' element={<AdminLayout />}>
+          <Route path='dashboard' element={<AdminDashboard />} />
+        </Route>
         <Route path='*' element={<NotFoundPage />} />
       </Routes>
     </Router>

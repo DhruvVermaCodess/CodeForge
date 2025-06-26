@@ -1,69 +1,19 @@
 const mongoose = require('mongoose');
 
 const courseSchema = new mongoose.Schema({
-  title: { 
-    type: String, 
-    required: true 
-  },
-  subtitle: {                                                                                                                                                                                           
-    type: String 
-  },
-  icon: { 
-    type: String // store as string or import path
-  }, 
-  duration: { 
-    type: String 
-  },
-  students: { 
-    type: String // or Number, based on how you want to handle it
-  }, 
-  rating: { 
-    type: Number 
-  },
-  price: { 
-    type: String 
-  },
-  originalPrice: { 
-    type: String 
-  },
-  level: { 
-    type: String, 
-    enum: ['Beginner', 'Intermediate', 'Advanced'], 
-    default: 'Beginner' 
-  },
-  description: { 
-    type: String 
-  },
-  technologies: [{ 
-    type: String 
-  }],
-  highlights: [{ 
-    type: String 
-  }],
-  gradient: { 
-    type: String 
-  },
-  bgGradient: { 
-    type: String 
-  },
-  prerequisites: { 
-    type: String 
-  },
-  isMain: {
-    type: String, 
-    enum: ['Yes', 'No'], 
-    default: 'No'
-  }, // for multiple flags
-  createdBy: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'User'
-  },
-  enrolledUsers: [{
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'User'
-  }]
-}, { 
-  timestamps: true 
+  image: { type: String, required: true },
+  coursename: { type: String, required: true },
+  slug: { type: String, required: true, unique: true },
+  status: { type: String, enum: ['live batch', 'recorded video'], required: true },
+  languages: { type: [String], required: true },
+  real_price: { type: Number, required: true },
+  discounted_price: { type: Number, required: true },
+  discount: { type: String, required: true },
+  completesyllabus: { type: [String], required: true },
+  faqs: { type: [String], required: true },
+  prerequistes: { type: [String], required: true }
+}, {
+  timestamps: true // Adds createdAt and updatedAt fields
 });
 
 module.exports = mongoose.model('Course', courseSchema);
