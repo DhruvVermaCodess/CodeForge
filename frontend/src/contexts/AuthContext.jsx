@@ -5,6 +5,7 @@ export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [name, setName] = useState(null);
+  const [role, setRole] = useState(null)
   const [isAuth, setIsAuth] = useState(false);
   const [loading, setLoading] = useState(true);
 
@@ -21,7 +22,9 @@ export const AuthProvider = ({ children }) => {
 
       if (decoded.exp > currentTime) {
         setIsAuth(true);
+        setRole(decoded.role || null);
         setName(decoded.userName || null);
+
       } else {
         localStorage.removeItem('token');
       }
@@ -34,7 +37,7 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   return (
-    <AuthContext.Provider value={{ name, setName, isAuth, setIsAuth, loading }}>
+    <AuthContext.Provider value={{ name, setName, isAuth, setIsAuth, loading, role }}>
       {children}
     </AuthContext.Provider>
   );

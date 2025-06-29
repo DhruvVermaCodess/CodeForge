@@ -1,0 +1,120 @@
+[
+    {
+      "id": "0",
+      "image": "/fullstack.webp",
+      "coursename": "Full Stack Web Development",
+      "slug": "full-stack-web-dev",
+      "status": "live batch",
+      "languages": ["Hindi", "English"],
+      "real_price": 19999,
+      "discounted_price": 9999,
+      "discount": "50%",
+      "completesyllabus": [
+        "Frontend Basics",
+        "React.js",
+        "Backend with Node.js and Express",
+        "MongoDB",
+        "Authentication",
+        "Deployment"
+      ],
+      "faqs": [
+        "Is this course beginner-friendly?",
+        "Do I get lifetime access?"
+      ],
+      "prerequistes": ["Basic computer knowledge"]
+    },
+    {
+        "id": "1",
+      "image": "/images/frontend.jpg",
+      "coursename": "Frontend Development",
+      "slug": "frontend-dev",
+      "status": "live batch",
+      "languages": ["Hindi", "English"],
+      "real_price": 9999,
+      "discounted_price": 4999,
+      "discount": "50%",
+      "completesyllabus": [
+        "HTML & CSS",
+        "JavaScript ES6+",
+        "Responsive Design",
+        "React Fundamentals",
+        "Tailwind CSS"
+      ],
+      "faqs": [
+        "Can I build websites after this?",
+        "Are projects included?"
+      ],
+      "prerequistes": ["None"]
+    },
+    {
+        "id": "2",
+      "image": "/images/backend.jpg",
+      "coursename": "Backend Development",
+      "slug": "backend-dev",
+      "status": "recorded video",
+      "languages": ["Hindi", "English"],
+      "real_price": 13999,
+      "discounted_price": 6999,
+      "discount": "50%",
+      "completesyllabus": [
+        "Node.js Basics",
+        "Express.js",
+        "MongoDB",
+        "Redis Caching",
+        "Nginx Reverse Proxy",
+        "Microservices Intro"
+      ],
+      "faqs": [
+        "Is this course advanced?",
+        "What kind of projects will I make?"
+      ],
+      "prerequistes": ["JavaScript Basics"]
+    },
+    {
+        "id": "3",
+      "image": "/images/appdev.jpg",
+      "coursename": "App Development with React Native",
+      "slug": "react-native-app-dev",
+      "status": "live batch",
+      "languages": ["Hindi", "English"],
+      "real_price": 12999,
+      "discounted_price": 6499,
+      "discount": "50%",
+      "completesyllabus": [
+        "React Native Basics",
+        "Navigation & Routing",
+        "State Management",
+        "APIs & Storage",
+        "App Deployment"
+      ],
+      "faqs": [
+        "Will I build real apps?",
+        "Can I publish on Play Store?"
+      ],
+      "prerequistes": ["JavaScript", "React"]
+    },
+    {
+        "id": "4",
+      "image": "/images/python.jpg",
+      "coursename": "Python for Beginners",
+      "slug": "python-beginners",
+      "status": "recorded video",
+      "languages": ["Hindi", "English"],
+      "real_price": 7999,
+      "discounted_price": 3999,
+      "discount": "50%",
+      "completesyllabus": [
+        "Python Basics",
+        "Data Structures",
+        "File Handling",
+        "OOP in Python",
+        "Mini Projects"
+      ],
+      "faqs": [
+        "Is it good for complete beginners?",
+        "Will I learn enough for job prep?"
+      ],
+      "prerequistes": ["None"]
+    }
+  ]
+  

@@ -12,45 +12,63 @@ import { AuthContext } from './contexts/AuthContext';
 import LoadingUI from './components/LoadingUi';
 import CourseDetailsPage from './pages/CourseDetailsPage';
 import ProfilePage from './pages/ProfilePage';
-import PersonalDetails from './pages/PersonalDetails';
+import PersonalDetails from './pages/PersonalDetails'
 import EnrollmentCourses from './pages/EnrollmentCourses';
 import CoursePage from './pages/CoursePage';
 import AdminLayout from './layouts/admin/AdminLayout';
 import AdminDashboard from './layouts/admin/components/AdminDashboard';
-import { useLocation } from 'react-router-dom';
+import AddCoursePage from './layouts/admin/components/AddCoursePage';
+import PaymentPortal from './pages/PaymentPortal';
+import FreeCareerCounselling from './pages/FreeCareerCounselling';
+import ProtectedRoutes from './components/ProtectedRoutes';
 
-const App = () => {
-  const { isAuth, loading } = useContext(AuthContext)
-  const { location } = useLocation();
+const AppRoutes = () => {
+  const location = useLocation();
+  const { isAuth, loading, role } = useContext(AuthContext);
 
   if (loading) {
-    return <LoadingUI />
+    return <LoadingUI />;
   }
-  
+
   return (
-    <Router>
-      {!location.search}
-      <Navbar />
+    <>
+      {!location.pathname.startsWith('/admin') && <Navbar />}
       <Routes>
         <Route path='/' element={<HomePage />} />
         <Route path='/login' element={isAuth ? <Navigate to='/' /> : <LoginPage />} />
         <Route path='/signup' element={isAuth ? <Navigate to='/' /> : <SignupPage />} />
         <Route path='/about' element={<AboutPage />} />
         <Route path='/placements' element={<CodeForgePlacement />} />
-        <Route path='/profile' element={<ProfilePage />}>
+        <Route path='/profile' element={
+          <ProtectedRoutes>
+            <ProfilePage />
+          </ProtectedRoutes>
+        }>
             <Route path='personal-details' element={<PersonalDetails />} />
             <Route path='enrollment-courses' element={<EnrollmentCourses />} />
         </Route>
+        <Route path='/payment/:id' element={<PaymentPortal />} />
+        <Route path='/free-career-counselling' element={<FreeCareerCounselling />}/>
         <Route path='/courses' element={<CoursePage />} />
-        <Route path='/courses/:id' element={<CourseDetailsPage />} />
-        <Route path='/admin' element={<AdminLayout />}>
+        <Route path='/courses/:slug' element={<CourseDetailsPage />} />
+        <Route path='/admin' element={
+          <ProtectedRoutes>
+            {role === 'admin' ? <AdminLayout /> : <Navigate to='/'/>}
+          </ProtectedRoutes>
+        }>
           <Route path='dashboard' element={<AdminDashboard />} />
+          <Route path='add-courses' element={<AddCoursePage />} />
         </Route>
         <Route path='*' element={<NotFoundPage />} />
       </Routes>
-    </Router>
-    
-  )
-}
+    </>
+  );
+};
 
-export default App
+const App = () => (
+  <Router>
+    <AppRoutes />
+  </Router>
+);
+
+export default App;

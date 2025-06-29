@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { ChevronRight, Code, Smartphone, Brain, Globe, Zap, Star, Award, Users, TrendingUp, Layers } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const HeroSection = () => {
   const [currentTech, setCurrentTech] = useState(0);
@@ -139,16 +140,16 @@ const HeroSection = () => {
 
         {/* Enhanced CTA Buttons */}
         <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16">
-          <button className="group relative bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white px-10 py-5 rounded-full font-bold text-lg transition-all duration-300 transform hover:scale-110 hover:shadow-2xl hover:shadow-blue-500/50 flex items-center gap-3 overflow-hidden">
+          <Link to='/courses' className="group relative bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white px-10 py-5 rounded-full font-bold text-lg transition-all duration-300 transform hover:scale-110 hover:shadow-2xl hover:shadow-blue-500/50 flex items-center gap-3 overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             <span className="relative z-10">🚀 Enroll Now</span>
             <ChevronRight className="relative z-10 group-hover:translate-x-2 transition-transform duration-300" size={22} />
-          </button>
+          </Link>
           
-          <button className="group relative border-2 border-cyan-400/50 hover:border-cyan-400 text-cyan-400 hover:text-white px-10 py-5 rounded-full font-bold text-lg transition-all duration-300 backdrop-blur-xl hover:bg-cyan-400/10 flex items-center gap-3">
+          <Link to='/free-career-counselling' className="group relative border-2 border-cyan-400/50 hover:border-cyan-400 text-cyan-400 hover:text-white px-10 py-5 rounded-full font-bold text-lg transition-all duration-300 backdrop-blur-xl hover:bg-cyan-400/10 flex items-center gap-3">
             <Award size={22} />
-            View Curriculum
-          </button>
+            Get Free Career Counselling
+          </Link>
         </div>
 
         {/* Enhanced Stats */}

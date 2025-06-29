@@ -29,7 +29,7 @@ const LoginPage = () => {
     const data = await response.json()
     localStorage.setItem('token', data.token)
     setIsAuth(true)
-    navigate('/')
+    navigate('/', {replace: true})
   }
 
   const handleGoogleLogin = () => {
