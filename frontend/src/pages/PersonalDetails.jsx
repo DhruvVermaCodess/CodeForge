@@ -1,30 +1,48 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Edit, Save,  LogOut } from 'lucide-react';
 import { BACKEND_URI } from '../utils';
+import { AuthContext } from '../contexts/AuthContext';
 
 const PersonalDetails = () => {
   const [isEditing, setIsEditing] = useState(false);
   const [data, setData] = useState(null)
   const [formData, setFormData] = useState({
-    fullName: 'Dhruv Verma',
-    email: 'dhruv.verma@gmail.com',
-    phone: '+919305535095',
-    occupation: 'Student',
+    fullName: '',
+    email: '',
+    phone: '',
+    occupation: '',
     city: ''
   });
+  const {handleLogout} = useContext(AuthContext)
+
+  console.log(data)
 
   const handleInputChange = (field, value) => {
     setFormData(prev => ({ ...prev, [field]: value }));
   };
 
-  const handleSave = () => {
+  const handleSave = async () => {
     setIsEditing(false);
-    // Save logic here
-  };
-
-  const handleLogout = () => {
-    // Logout logic here
-    console.log('Logging out...');
+    try {
+      const response = await fetch(`${BACKEND_URI}/user/profile`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${localStorage.getItem('token')}`
+        },
+        body: JSON.stringify({
+          name: formData.fullName,
+          email: formData.email,
+          phone: formData.phone,
+          occupation: formData.occupation,
+          city: formData.city
+        })
+      });
+      const updated = await response.json();
+      setData(updated.user);
+    } catch (error) {
+      console.error('Failed to update profile:', error);
+    }
   };
 
   useEffect(() => {
@@ -36,9 +54,15 @@ const PersonalDetails = () => {
         }
       });
       const data = await response.json()
-      setData(data)
+      setData(data.user);
+      setFormData({
+        fullName: data.user.name || '',
+        email: data.user.email || '',
+        phone: data.user.phone || '',
+        occupation: data.user.occupation || '',
+        city: data.user.city || ''
+      });
     }
-
     fetchProfile()
   }, [])
   
@@ -48,7 +72,7 @@ const PersonalDetails = () => {
       {/* Profile Header */}
       <div className="flex items-center gap-4 mb-8">
         <div className="w-20 h-20 bg-green-500 rounded-full flex items-center justify-center text-2xl font-bold text-white relative">
-          {data?.name||null}
+          {data?.name?.[0]||null}
           <div className="absolute -top-1 -right-1 w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center">
             <Edit size={12} className="text-white" />
           </div>

@@ -25,7 +25,10 @@ const userSchema = new mongoose.Schema({
         default: []
     },
     batch: {type: String, enum: ['VSICS' , 'DAMS_9:30' , 'DAMS_11:30'] },
-    role: {type: String, enum: ['user' , 'admin'], default: 'user'}
+    role: {type: String, enum: ['user' , 'admin'], default: 'user'},
+    phone: { type: String },
+    occupation: { type: String },
+    city: { type: String },
 },{
     timestamps: true
 })

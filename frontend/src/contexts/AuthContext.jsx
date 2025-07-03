@@ -36,8 +36,17 @@ export const AuthProvider = ({ children }) => {
     }
   }, []);
 
+  const handleLogout = () => {
+    if (isAuth) {
+      localStorage.removeItem('token');
+      setIsAuth(false);
+    } else {
+      alert('Wtf login first you fool');
+    }
+  };
+
   return (
-    <AuthContext.Provider value={{ name, setName, isAuth, setIsAuth, loading, role }}>
+    <AuthContext.Provider value={{ name, setName, isAuth, setIsAuth, loading, role, handleLogout }}>
       {children}
     </AuthContext.Provider>
   );
