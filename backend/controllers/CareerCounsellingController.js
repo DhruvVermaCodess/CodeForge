@@ -1,7 +1,6 @@
 const nodemailer = require('nodemailer');
-
-const companyEmail = 'codeforgecompany@gmail.com';
-const MailPassword = 'zprx dewv asqr kjyw'
+const companyEmail = process.env.COMPANY_EMAIL;
+const MailPassword = process.env.MAIL_PASSWORD;
 
 exports.mailCareerCounselling = async (req, res) => {
     try {
