@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { BACKEND_URI } from '../utils'
+import { toast } from 'react-toastify'
 
 const FreeCareerCounselling = () => {
   const [name, setName] = useState('')
@@ -19,9 +20,18 @@ const FreeCareerCounselling = () => {
       },
       body: JSON.stringify({ name, email, phoneNumber, prefferedLanguage, experienceLevel, message })
     })
-
+    if (!response.ok) {
+      const data = await response.json()
+      return toast.error(data.error)
+    }
     const data = await response.json()
-    alert(data.message)
+    toast.success(data.message)
+    setName('')
+    setEmail('')
+    setPhoneNumber('')
+    setPrefferedLanguage('Hindi')
+    setExperienceLevel('School_Student')
+    setMessage('')
   }
 
   return (

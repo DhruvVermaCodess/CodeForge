@@ -109,15 +109,20 @@ const HeroSection = () => {
 
         {/* Enhanced Main Headline */}
         <h1 className="text-6xl md:text-8xl font-black mb-4 sm:mb-8 leading-none">
-          <span className="bg-gradient-to-r leading-none from-white via-blue-100 to-blue-200 bg-clip-text text-transparent">
-            Get Skilled & Placed
-          </span>
-          <br />
-          <span className="bg-gradient-to-r leading-none from-blue-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent relative">
-            As A Software Engineer
-            <div className="absolute -inset-2 bg-gradient-to-r from-blue-400/20 to-purple-400/20 blur-2xl -z-10 rounded-lg"></div>
-          </span>
-        </h1>
+  <span className="bg-gradient-to-r leading-none from-white via-blue-100 to-blue-200 bg-clip-text text-transparent">
+    Get Skilled & Placed
+  </span>
+  <br />
+  <span className="bg-gradient-to-r leading-none from-blue-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent relative inline-block">
+    As A Software Engineer
+    <div className="absolute -inset-2 bg-gradient-to-r from-blue-400/20 to-purple-400/20 blur-2xl -z-10 rounded-lg"></div>
+    <div className="text-base md:text-xl font-medium mt-2">
+      in ₹1500/
+      <span className="text-xs align-top">month</span>
+    </div>
+  </span>
+</h1>
+
 
         {/* Course Specializations */}
         <div className="mb-5 hidden sm:block">

@@ -21,6 +21,7 @@ import AddCoursePage from './layouts/admin/components/AddCoursePage';
 import PaymentPortal from './pages/PaymentPortal';
 import FreeCareerCounselling from './pages/FreeCareerCounselling';
 import ProtectedRoutes from './components/ProtectedRoutes';
+import { ToastContainer } from 'react-toastify';
 
 const AppRoutes = () => {
   const location = useLocation();
@@ -68,6 +69,7 @@ const AppRoutes = () => {
 const App = () => (
   <Router>
     <AppRoutes />
+    <ToastContainer />
   </Router>
 );
 
