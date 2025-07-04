@@ -1,1 +1,1 @@
-export const BACKEND_URI = 'http://localhost:5000';
+export const BACKEND_URI = 'https://codeforge-1f0c.onrender.com';
