@@ -11,7 +11,8 @@ const courseSchema = new mongoose.Schema({
   discount: { type: String, required: true },
   completesyllabus: { type: [String], required: true },
   faqs: { type: [String], required: true },
-  prerequistes: { type: [String], required: true }
+  prerequistes: { type: [String], required: true },
+  instructor: { type: String, required: true }
 }, {
   timestamps: true // Adds createdAt and updatedAt fields
 });

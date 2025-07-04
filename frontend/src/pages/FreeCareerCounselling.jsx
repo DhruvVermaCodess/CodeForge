@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { BACKEND_URI } from '../utils'
 import { toast } from 'react-toastify'
+import LoadingUi from '../components/LoadingUi'
 
 const FreeCareerCounselling = () => {
   const [name, setName] = useState('')
@@ -9,34 +10,48 @@ const FreeCareerCounselling = () => {
   const [prefferedLanguage, setPrefferedLanguage] = useState('Hindi')
   const [experienceLevel, setExperienceLevel] = useState('School_Student')
   const [message, setMessage] = useState('')
+  const [loading, setLoading] = useState(false)
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-
-    const response = await fetch(`${BACKEND_URI}/mail/get-free-counselling`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ name, email, phoneNumber, prefferedLanguage, experienceLevel, message })
-    })
-    if (!response.ok) {
+    setLoading(true)
+    try {
+      const response = await fetch(`${BACKEND_URI}/mail/get-free-counselling`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ name, email, phoneNumber, prefferedLanguage, experienceLevel, message })
+      })
+      if (!response.ok) {
+        const data = await response.json()
+        toast.error(data.error)
+        setLoading(false)
+        return
+      }
       const data = await response.json()
-      return toast.error(data.error)
+      toast.success(data.message)
+      setName('')
+      setEmail('')
+      setPhoneNumber('')
+      setPrefferedLanguage('Hindi')
+      setExperienceLevel('School_Student')
+      setMessage('')
+    } catch (error) {
+      toast.error('Something went wrong!')
+    } finally {
+      setLoading(false)
     }
-    const data = await response.json()
-    toast.success(data.message)
-    setName('')
-    setEmail('')
-    setPhoneNumber('')
-    setPrefferedLanguage('Hindi')
-    setExperienceLevel('School_Student')
-    setMessage('')
   }
 
   return (
-    <div className="min-h-screen bg-zinc-900 text-white flex items-center justify-center px-6 py-24">
-      <form onSubmit={handleSubmit} className="w-full max-w-5xl bg-zinc-800 p-10 rounded-2xl shadow-xl space-y-8">
+    <div className="min-h-screen bg-zinc-900 text-white flex items-center justify-center px-6 py-24 relative">
+      {loading && (
+        <div className="absolute inset-0 z-20 flex items-center justify-center bg-black bg-opacity-60 rounded-2xl">
+          <LoadingUi />
+        </div>
+      )}
+      <form onSubmit={handleSubmit} className="w-full max-w-5xl bg-zinc-800 p-10 rounded-2xl shadow-xl space-y-8" style={{ opacity: loading ? 0.5 : 1, pointerEvents: loading ? 'none' : 'auto' }}>
         <h2 className="text-3xl font-bold text-center text-white mb-4">Free Career Counselling</h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -121,9 +136,10 @@ const FreeCareerCounselling = () => {
         <div className="pt-6">
           <button
             type="submit"
-            className="w-full py-3 bg-purple-600 hover:bg-purple-700 transition-colors rounded-lg text-white font-semibold text-lg"
+            className="w-full py-3 bg-purple-600 hover:bg-purple-700 transition-colors rounded-lg text-white font-semibold text-lg disabled:opacity-60 disabled:cursor-not-allowed"
+            disabled={loading}
           >
-            SEND
+            {loading ? 'Sending...' : 'SEND'}
           </button>
         </div>
       </form>

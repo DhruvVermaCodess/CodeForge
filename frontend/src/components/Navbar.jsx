@@ -64,7 +64,7 @@ const Navbar = () => {
     { name: 'Home', href: '/', icon: Home },
     { name: 'Courses', href: '/courses', icon: GraduationCap },
     { name: 'About Us', href: '/about', icon: Users },
-    { name: 'Placements', href: '/placements', icon: Award }
+    { name: 'SE01', href: '/se01-bootcamp', icon: Award }
   ];
 
   const handleNavClick = (href) => {

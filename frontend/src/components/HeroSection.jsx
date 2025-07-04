@@ -108,20 +108,15 @@ const HeroSection = () => {
         </div>
 
         {/* Enhanced Main Headline */}
-        <h1 className="text-6xl md:text-8xl font-black mb-4 sm:mb-8 leading-none">
-  <span className="bg-gradient-to-r leading-none from-white via-blue-100 to-blue-200 bg-clip-text text-transparent">
-    Get Skilled & Placed
-  </span>
-  <br />
-  <span className="bg-gradient-to-r leading-none from-blue-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent relative inline-block">
-    As A Software Engineer
-    <div className="absolute -inset-2 bg-gradient-to-r from-blue-400/20 to-purple-400/20 blur-2xl -z-10 rounded-lg"></div>
-    <div className="text-base md:text-xl font-medium mt-2">
-      in ₹1500/
-      <span className="text-xs align-top">month</span>
-    </div>
-  </span>
-</h1>
+        <h1 className="text-5xl md:text-8xl font-black mb-4 sm:mb-8 leading-none">
+          <span className="bg-gradient-to-r leading-none from-white via-blue-100 to-blue-200 bg-clip-text text-transparent">
+            Placed As A Software
+          </span>
+          <br />
+          <span className="bg-gradient-to-r leading-none from-blue-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent relative inline-block">
+              Engineer in ₹1500/month
+          </span>
+      </h1>
 
 
         {/* Course Specializations */}
@@ -145,7 +140,7 @@ const HeroSection = () => {
 
         {/* Enhanced CTA Buttons */}
         <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16">
-          <Link to='/courses' className="group relative bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white px-10 py-5 rounded-full font-bold text-lg transition-all duration-300 transform hover:scale-110 hover:shadow-2xl hover:shadow-blue-500/50 flex items-center gap-3 overflow-hidden">
+          <Link to='/se01-bootcamp' className="group relative bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white px-10 py-5 rounded-full font-bold text-lg transition-all duration-300 transform hover:scale-110 hover:shadow-2xl hover:shadow-blue-500/50 flex items-center gap-3 overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             <span className="relative z-10">🚀 Enroll Now</span>
             <ChevronRight className="relative z-10 group-hover:translate-x-2 transition-transform duration-300" size={22} />
