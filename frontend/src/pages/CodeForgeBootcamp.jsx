@@ -546,8 +546,7 @@ const EnhancedBootcampUI = () => {
             
             <div className="flex items-center gap-4">
               <div className="flex items-center gap-2">
-                <span className="text-white font-bold">₹8,000</span>
-                <span className="text-blue-200 line-through">₹12,000</span>
+                <span className="text-white font-bold">₹1500/month</span>
               </div>
               <a
                 href={enrollmentLink}
