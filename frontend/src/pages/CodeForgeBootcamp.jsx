@@ -231,7 +231,7 @@ const EnhancedBootcampUI = () => {
             <div className={`flex flex-col md:flex-row items-center justify-center gap-8 mb-12 transition-all duration-1000 delay-700 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'}`}>
               <div className="flex items-center gap-3 bg-gradient-to-r from-green-500/20 to-emerald-500/20 border border-green-400/30 rounded-full px-6 py-3 backdrop-blur-xl">
                 <Calendar className="h-5 w-5 text-green-400" />
-                <span className="font-semibold text-green-300">Starting July 15th</span>
+                <span className="font-semibold text-green-300">Starting July 20th</span>
               </div>
               <div className="flex items-center gap-3 bg-gradient-to-r from-red-500/20 to-pink-500/20 border border-red-400/30 rounded-full px-6 py-3 backdrop-blur-xl animate-pulse">
                 <Users className="h-5 w-5 text-red-400" />
@@ -484,7 +484,7 @@ const EnhancedBootcampUI = () => {
             </div>
             
             <p className="text-xl md:text-2xl text-blue-100 mb-12 max-w-3xl mx-auto leading-relaxed">
-              Join our next cohort of future tech leaders. Limited seats available for July 15th intake.
+              Join our next cohort of future tech leaders. Limited seats available for July 20th intake.
             </p>
             
             <div className="flex flex-col md:flex-row gap-6 justify-center items-center">
